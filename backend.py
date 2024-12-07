@@ -1,8 +1,7 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from sorting_totalDonation import rank_donations
 from stats import Ratio
 from flask_cors import CORS
-import pandas as pd
 import csv
 
 app = Flask(__name__)
@@ -23,19 +22,19 @@ def add_input():
                 writer.writeheader()
             writer.writerow(data)
 
-        with open("templates/ranked_donations.csv", mode='a', newline='') as file: 
+        with open("templates/ranked_donations.csv", mode='w', newline='') as file: 
             ranked_donos = rank_donations()
-            # ranked_donos = ranked_donos[0],ranked_donos[2]
 
             ranked_donos_dicts = ranked_donos.to_dict(orient='records')
 
             writer = csv.DictWriter(file, fieldnames=ranked_donos.columns)
             if file.tell() == 0:
                 writer.writeheader()
-            
+
             writer.writerows(ranked_donos_dicts)
 
         return jsonify({"message": "Inputlar başarıyla algılandı", "inputs": user_inputs}), 200
+        
 
     return jsonify({"error": "Inputlar algılanamadı"}), 400
 
