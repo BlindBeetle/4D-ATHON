@@ -4,8 +4,14 @@
         <link rel="stylesheet" href="../static/donation.css">
     </head>
     <body>
+      <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="donation.html">Donation</a>
+        <a href="ranking.html">Donation ranking</a>
+        <a href="#about">About Us</a>
+    </div>
         <div class="form-basin">
-            <label for="donorName">Donor Name:</label>
+            <label for="donorName">Donator Name:</label>
             <input type="text" id="donorName" name="donorName" placeholder="Your Full Name">
         
             <label for="email">Email:</label>
@@ -20,21 +26,21 @@
             <div class="donation-type">
               <span>Donation Type:</span>
               <label for="oneTime">
-                <input type="radio" id="oneTime" name="donationType" value="One Time" checked=""> One Time
+                <input type="radio" id="oneTime" name="donationType" value="One Time" checked=""style=""> One Time
               </label>
               <label for="recurring">
                 <input type="radio" id="recurring" name="donationType" value="Recurring"> Recurring
               </label>
             </div>
         
-            <button type="submit">DONATE NOW</button>
+            <button type="submit" id="submit">DONATE NOW</button>
           </form>
         </div>
-        <script src="donation.js"></script>
         <footer>
             <div class="container">
               <p>&copy; 2024 Clean Ocean Initiative. All rights reserved.</p>
             </div>
         </footer>
+        <script src="../static/donation.js" defer></script>
     </body>
     </html>
