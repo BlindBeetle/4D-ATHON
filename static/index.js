@@ -1,24 +1,17 @@
+function handleResponse(data) {
+  const totalMoneyElement = document.getElementById("totalMoney");
+  const totalTrashElement = document.getElementById("totalTrash");
+
+  if (data.status === "success") {
+      totalMoneyElement.textContent = `$${data.values.total_donations.toFixed(2)}`;
+      totalTrashElement.textContent = `${data.values.trash_ratio.toFixed(2)} kg`;
+  } else {
+      console.error("Error in response:", data.message);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    const moneyElement = document.getElementById("totalMoney");
-    const trashElement = document.getElementById("totalTrash");
-
-    function loadValues() {
-      fetch("http://127.0.0.1:5000/donation_values", {
-        method: "GET",
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.values) {
-            const [totalMoney, totalTrash] = data.values;
-            moneyElement.textContent = `$${totalMoney.toFixed(2)}`;
-            trashElement.textContent = `${totalTrash.toFixed(2)} kg`;
-          } else {
-            console.error("Failed to load donation values.");
-          }
-        })
-        .catch((error) => console.error("Error fetching values:", error));
-    }
-
-    loadValues();
-  });
-  
+  const script = document.createElement("script");
+  script.src = "http://127.0.0.1:5000/donation_values?callback=handleResponse";
+  document.body.appendChild(script);
+});

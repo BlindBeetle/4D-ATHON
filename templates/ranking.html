@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donation Rankings</title>
-    <link rel="stylesheet" href="static\donation.css">
-    <script src="static\ranking.js" defer></script>
+    <title>Rankings</title>
+    <link rel="stylesheet" href="../static/ranking.css">
+    <script src="../static/ranking.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Donation Rankings</h1>
-    </header>
-    <main>
-        <table>
+    <!--Toolbar default -->
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a href="donation.html">Donate</a>
+        <a class="active" href="ranking.html">Rankings</a>
+    </div>
+
+    <!-- Rankings için -->
+    <section class="rankings">
+        <h1>Leaderboard</h1>
+        <table class="ranking-table">
             <thead>
                 <tr>
                     <th>Rank</th>
-                    <th>Donor</th>
+                    <th>Donor Name</th>
                     <th>Total Donation</th>
                     <th>Message</th>
                 </tr>
@@ -24,6 +30,11 @@
             <tbody id="rankingTable">
             </tbody>
         </table>
-    </main>
+    </section>
+
+    <!-- Alttaki footer -->
+    <footer>
+        <p>&copy; 2024 Clean Ocean Initiative. All rights reserved.</p>
+    </footer>
 </body>
 </html>

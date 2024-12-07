@@ -1,52 +1,72 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const rankingTable = document.getElementById("rankingTable");
+  const rankingTableBody = document.getElementById("rankingTable");
 
-  function loadRankings() {
-    fetch("http://127.0.0.1:5000/load_rankings", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status === "success" && data.rankings) {
-          displayRankings(data.rankings);
-        } else {
-          console.error("Failed to load rankings.");
-        }
-      })
-      .catch((error) => console.error("Error fetching rankings:", error));
+  if (!rankingTableBody) {
+      console.error('The <tbody> with id "rankingTable" was not found in the DOM.');
+      return;
   }
 
-  function displayRankings(rankings) {
-    rankingTable.innerHTML = "";
+  async function loadRankings() {
+      try {
+          const response = await fetch("ranked_donations.csv");
 
-    rankings.forEach((ranking, index) => {
-      const row = document.createElement("tr");
+          if (!response.ok) {
+              throw new Error("Failed to load the CSV file!");
+          }
 
-      // Rank
-      const rankCell = document.createElement("td");
-      rankCell.textContent = index + 1;
-      row.appendChild(rankCell);
+          const data = await response.text();
+          populateTable(data);
+      } catch (error) {
+          console.error("Error fetching rankings:", error.message);
+      }
+  }
 
-      // Donor Name
-      const donorCell = document.createElement("td");
-      donorCell.textContent = ranking.donorName || "Anonymous";
-      row.appendChild(donorCell);
+  function populateTable(data) {
+      const rows = data.split("\n").filter(row => row.trim() !== "");
 
-      // Total Donation
-      const donationCell = document.createElement("td");
-      donationCell.textContent = `$${ranking.totalDonation}`;
-      row.appendChild(donationCell);
 
-      // Message
-      const messageCell = document.createElement("td");
-      messageCell.textContent = ranking.message || "N/A";
-      row.appendChild(messageCell);
+      const header = rows.shift().split(",").map(col => col.trim().toLowerCase());
 
-      rankingTable.appendChild(row);
-    });
+      if (!header.includes("donorname") || !header.includes("donationamount") || !header.includes("message")) {
+          console.error("CSV does not contain the required columns: donorName, donationAmount, message.");
+          return;
+      }
+
+
+      const parsedRows = rows.map(row => {
+          const cols = row.split(",").map(col => col.trim());
+          return {
+              donorName: cols[header.indexOf("donorname")] || "Anonymous",
+              donationAmount: parseFloat(cols[header.indexOf("donationamount")]) || 0,
+              message: cols[header.indexOf("message")] || "No message"
+          };
+      });
+
+
+      parsedRows.sort((a, b) => b.donationAmount - a.donationAmount);
+
+
+      parsedRows.forEach((row, index) => {
+          const tr = document.createElement("tr");
+
+          const rankCell = document.createElement("td");
+          rankCell.textContent = index + 1;
+          tr.appendChild(rankCell);
+
+          const donorCell = document.createElement("td");
+          donorCell.textContent = row.donorName;
+          tr.appendChild(donorCell);
+
+          const donationCell = document.createElement("td");
+          donationCell.textContent = `$${row.donationAmount.toFixed(2)}`;
+          tr.appendChild(donationCell);
+
+          const messageCell = document.createElement("td");
+          messageCell.textContent = row.message;
+          tr.appendChild(messageCell);
+
+          rankingTableBody.appendChild(tr);
+      });
   }
 
   loadRankings();
