@@ -1,0 +1,158 @@
+/* styles.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+  }
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  header.hero {
+    background: url('ocean_wallpaper.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 5rem 1rem;
+  }
+  
+  header.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  header.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-button {
+    background: #04AA6D;
+    color: white;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+  
+  .stats {
+    padding: 4rem 1rem;
+    text-align: center;
+  }
+  
+  .stats h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .stats-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .stat {
+    flex: 1 1 200px;
+    margin: 1rem;
+  }
+  
+  .stat h3 {
+    font-size: 2.5rem;
+    color: #05c57f;
+  }
+  
+  .how-it-works, .donate {
+    padding: 4rem 1rem;
+    background: #84a9cc;
+  }
+  
+  .steps {
+    background: bisque;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 1rem;
+    border: 2px solid bisque;
+    border-radius: 20px;
+  }
+  
+  .step {
+    flex: 1 1 300px;
+    margin: 1rem;
+    background: #f5e8ce;
+    padding: 1rem;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    text-align: center;
+  }
+  
+  .donation-form {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .donation-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .donation-form input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .donation-form button {
+    background: #ff6600;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .donation-form button:hover {
+    background: #e65c00;
+  }
+
+  footer {
+    background: #333; 
+    color: white; 
+    text-align: center; 
+    padding: 1rem 0; 
+  }
+
+  

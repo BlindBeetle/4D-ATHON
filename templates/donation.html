@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Clean Ocean Initiative</title>
+        <link rel="stylesheet" href="../static/donation.css">
+    </head>
+    <body>
+        <div class="form-basin">
+            <label for="donorName">Donor Name:</label>
+            <input type="text" id="donorName" name="donorName" placeholder="Your Full Name">
+        
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email">
+        
+            <label for="donationAmount">Donation Amount:</label>
+            <input type="number" id="donationAmount" name="donationAmount" placeholder="Amount in USD" min="1">
+        
+            <label for="message">Message (Optional):</label>
+            <textarea id="message" name="message" placeholder="Leave a message"></textarea>
+        
+            <div class="donation-type">
+              <span>Donation Type:</span>
+              <label for="oneTime">
+                <input type="radio" id="oneTime" name="donationType" value="One Time" checked=""> One Time
+              </label>
+              <label for="recurring">
+                <input type="radio" id="recurring" name="donationType" value="Recurring"> Recurring
+              </label>
+            </div>
+        
+            <button type="submit">DONATE NOW</button>
+          </form>
+        </div>
+        <script src="donation.js"></script>
+        <footer>
+            <div class="container">
+              <p>&copy; 2024 Clean Ocean Initiative. All rights reserved.</p>
+            </div>
+        </footer>
+    </body>
+    </html>
