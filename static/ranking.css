@@ -34,7 +34,7 @@ body {
 }
 
 .topnav a.active {
-    background-color: #04AA6D;
+    background-color: #ffb347;
     color: white;
 }
 
@@ -71,7 +71,7 @@ body {
 }
 
 .ranking-table th {
-    background-color: #04AA6D;
+    background-color: #ffb347;
     color: white;
     font-weight: bold;
     text-align: center;
@@ -86,7 +86,7 @@ body {
 }
 
 .ranking-table tr:hover {
-    background-color: #eafaf1;
+    background-color: #fff8ee;
 }
 
 head,body{
