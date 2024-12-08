@@ -10,6 +10,18 @@ class Ratio:
         except FileNotFoundError:
             self.data = pd.DataFrame(columns=[0, 1, 2, 3])
 
+    def total_donaters(self):
+        try:
+            self.reload_data()
+            volunteer_count = len(self.data) - 1
+            return volunteer_count
+        except FileNotFoundError:
+            print("Donations.csv could not be found")
+            return 0
+        except Exception as e:
+            print(f"An error occured: {e}")
+            return 0
+    
     def total_donations(self):
         try:
             self.reload_data()
@@ -18,7 +30,7 @@ class Ratio:
         except Exception as e:
             print(f"Error while collecting money: {e}")
             return 0
-
+        
     def trash_calc(self):
         try:
             return self.total_donations() * self.trash
@@ -27,4 +39,5 @@ class Ratio:
             return 0
 
     def output(self):
-        return {"total_donations": self.total_donations(), "trash_ratio": self.trash_calc()}
+        return {"total_donations": self.total_donations(), "trash_ratio": self.trash_calc(), "volunteer_count": self.total_donaters()}
+
