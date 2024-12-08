@@ -17,11 +17,13 @@ body {
   
   .topnav a {
     float: left;
-    color: #f2f2f2;
+    display: block;
+    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   .topnav a:hover {
@@ -36,14 +38,15 @@ body {
   .container {
     width: 90%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto;   
   }
   
   header.hero {
     background: url('ocean_wallpaper.jpg') no-repeat center center/cover;
     color: white;
     text-align: center;
-    padding: 5rem 1rem;
+    padding: 5rem 1rem;   
+    filter: brightness(90%);
   }
   
   header.hero h1 {
@@ -93,7 +96,7 @@ body {
   
   .how-it-works, .donate {
     padding: 4rem 1rem;
-    background: #84a9cc;
+    background: #004c7d;
   }
   
   .steps {
@@ -114,38 +117,6 @@ body {
     border: 2px solid #000000;
     border-radius: 20px;
     text-align: center;
-  }
-  
-  .donation-form {
-    max-width: 400px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .donation-form label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  
-  .donation-form input {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .donation-form button {
-    background: #ff6600;
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .donation-form button:hover {
-    background: #e65c00;
   }
 
   footer {

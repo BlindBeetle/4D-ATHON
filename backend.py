@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify
 from sorting_totalDonation import rank_donations
 from stats import Ratio
 from flask_cors import CORS
@@ -45,6 +45,7 @@ def get_inputs():
 @app.route('/donation_values', methods=['GET'])
 def get_values():
     callback = request.args.get("callback", "callback")
+  
     try:
         data = {"status": "success", "values": ratio.output()}
         response = f"{callback}({jsonify(data).get_data(as_text=True)})"
