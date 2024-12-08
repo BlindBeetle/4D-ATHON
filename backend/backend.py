@@ -22,7 +22,7 @@ def add_input():
                 writer.writeheader()
             writer.writerow(data)
 
-        with open("templates/ranked_donations.csv", mode='w', newline='') as file: 
+        with open("ranked_donations.csv", mode='w', newline='') as file: 
             ranked_donos = rank_donations()
 
             ranked_donos_dicts = ranked_donos.to_dict(orient='records')
