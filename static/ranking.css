@@ -15,16 +15,21 @@ body {
 .topnav {
     background-color: #333;
     overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 5px 0;
 }
 
 .topnav a {
     float: left;
     display: block;
-    color: white;
+    color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 1rem 0.9rem;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 14px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -97,11 +102,13 @@ footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 10px 0;
-    margin-top: auto;
+    padding: 1rem 0;
+    position: relative;
+    bottom: 0;
     width: 100%;
 }
 
 footer p {
     margin: 0;
+    font-size: 0.9rem;
 }
