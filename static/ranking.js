@@ -9,13 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadRankings() {
         try {
             const response = await fetch("ranked_donations.csv");
-  
             if (!response.ok) {
                 throw new Error("Failed to load the CSV file!");
             }
-  
             const data = await response.text();
             populateTable(data);
+            
         } catch (error) {
             console.error("Error fetching rankings:", error.message);
         }
@@ -23,15 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
   
     function populateTable(data) {
         const rows = data.split("\n").filter(row => row.trim() !== "");
-  
-  
         const header = rows.shift().split(",").map(col => col.trim().toLowerCase());
   
         if (!header.includes("donorname") || !header.includes("donationamount") || !header.includes("message")) {
             console.error("CSV does not contain the required columns: donorName, donationAmount, message.");
             return;
         }
-  
   
         const parsedRows = rows.map(row => {
             const cols = row.split(",").map(col => col.trim());
@@ -41,11 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 message: cols[header.indexOf("message")] || "No message"
             };
         });
-  
-  
+
         parsedRows.sort((a, b) => b.donationAmount - a.donationAmount);
-  
-  
         parsedRows.forEach((row, index) => {
             const tr = document.createElement("tr");
   
